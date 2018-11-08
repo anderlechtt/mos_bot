@@ -1,0 +1,13 @@
+twitch_api:
+  username:
+  oauth_key:
+  client_id:
+mos_bot:
+  log_level: 2
+  update_channels_timer_interval: 120 # 2 minutes
+  my_play_request_interval: 210 # 3.5 minutes
+  last_play_request_interval: 6
+  leaving_channel_timeout: 600 # 10 minutes
+  min_play_requests_to_play: 9
+  channel_search_min_viewers: 50
+  channel_search_max_results: 25
