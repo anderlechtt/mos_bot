@@ -12,9 +12,9 @@ def error(msg)
   exit(1)
 end
 
-if Settings.twitch_api['username'].empty?
+if Settings.twitch_api['username'].nil?
   error "No username given in #{config_filename}!"
-elsif Settings.twitch_api['oauth_key'].empty?
+elsif Settings.twitch_api['oauth_key'].nil?
   error "No oauth key given in #{config_filename}!"
 end
 
