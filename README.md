@@ -7,7 +7,7 @@ How does it work?
 -----------------
 
 MOSBot
-- fetches every 2 minutes up to 25 Twitch live streams featuring Marbles On Stream with more than 50 viewers
+- fetches every 2 minutes up to 5 Twitch live streams featuring Marbles On Stream with more than 50 viewers
 - joins these channels and waits for many people to enter "!play" in the chat
 - joins the game by sending a "!play" message to the Twitch Chat
 - waits 210 seconds before play detection starts again

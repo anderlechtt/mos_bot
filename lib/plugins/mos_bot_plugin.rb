@@ -64,7 +64,7 @@ class MosBotPlugin
   def update_channel(chan, data)
     if @channels[chan]
       @channels.update_channel_info chan, data
-    else
+    elsif @channels.size < Settings.mos_bot['max_joined_channels']
       @channels.add chan, data[:viewers], data[:updated_at]
     end
   end
@@ -89,7 +89,7 @@ class MosBotPlugin
 
   def update_channels
     leave_channels @channels.delete_idle_channels
-    return if @channels.size > 30
+    return if @channels.size >= Settings.mos_bot['max_joined_channels']
 
     found_channels = fetch_channels
     new_channels = found_channels.except(*@channels.channel_names)
