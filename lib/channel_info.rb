@@ -14,7 +14,8 @@ class ChannelInfo
 
     @last_play_request_at =
       now - Settings.mos_bot['last_play_request_interval']
-    @my_last_play_request_at = now
+    @my_last_play_request_at =
+      now - Settings.mos_bot['my_play_request_interval']
     @play_requests = 0
   end
 
