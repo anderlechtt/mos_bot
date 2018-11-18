@@ -1,7 +1,9 @@
-require './lib/logger'
+require './lib/log'
 
 # manages a list of channel data
 class ChannelInfoList
+  include Log
+
   def initialize
     @channels = {}
   end
@@ -29,9 +31,7 @@ class ChannelInfoList
       @channels.delete ch
     end
 
-    unless chans.empty?
-      Logger.p Logger::DEBUG, "channels after delete: #{@channels}"
-    end
+    logger.debug "channels after delete: #{@channels}" unless chans.empty?
 
     chans
   end

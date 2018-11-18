@@ -1,5 +1,5 @@
 require 'cinch'
-require './lib/logger'
+require './lib/log'
 require './lib/extensions/hash'
 require './lib/stream_finder'
 require './lib/channel_info'
@@ -8,6 +8,7 @@ require './lib/channel_info_list'
 # main mos bot logic
 class MosBotPlugin
   include Cinch::Plugin
+  include Log
 
   timer Settings.mos_bot['update_channels_timer_interval'],
         method: :update_channels
@@ -31,9 +32,8 @@ class MosBotPlugin
     @channels[chan].clear_obsolete_play_requests
     @channels[chan].add_play_request
 
-    Logger.p Logger::DEBUG,
-             "[#{chan}] play request noticed, " \
-             "#{@channels[chan].play_requests} now"
+    logger.debug "[#{chan}] play request noticed, " \
+                 "#{@channels[chan].play_requests} now"
 
     play chan if @channels[chan].ready_to_play?
   end
@@ -54,7 +54,7 @@ class MosBotPlugin
   end
 
   def print_channels
-    Logger.p Logger::INFO, "current channels list: #{@channels.size}"
+    logger.info "current channels list: #{@channels.size}"
 
     @channels.all.each do |channel_info|
       puts "- #{channel_info}"
@@ -105,8 +105,7 @@ class MosBotPlugin
   def play(chan)
     @channels[chan].update_my_last_play_request_at
     chan.send '!play'
-    Logger.p Logger::INFO,
-             "[#{chan}] PLAY REQUESTED! triggered on " \
-             "#{@channels[chan].play_requests} play requests"
+    logger.info "[#{chan}] PLAY REQUESTED! triggered on " \
+                "#{@channels[chan].play_requests} play requests"
   end
 end

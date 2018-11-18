@@ -3,7 +3,7 @@ twitch_api:
   oauth_key:
   client_id:
 mos_bot:
-  log_level: 2
+  log_level: info
   update_channels_timer_interval: 120 # 2 minutes
   my_play_request_interval: 210 # 3.5 minutes
   last_play_request_interval: 6
