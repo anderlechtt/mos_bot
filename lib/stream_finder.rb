@@ -3,13 +3,13 @@ require 'httparty'
 # uses twich api to get mos live streams
 class StreamFinder
   def self.fetch_streams
-    url = 'https://api.twitch.tv/kraken/streams/'
+    url = 'https://api.twitch.tv/helix/streams/'
     options = {
       headers: {
         'Client-ID' => Settings.twitch_api['client_id']
       },
       format: :plain,
-      query: { game: 'Marbles On Stream' }
+      query: { game_id: '509511' }
     }
 
     data = HTTParty.get(url, options)
@@ -18,8 +18,8 @@ class StreamFinder
 
   def self.parse_stream(stream)
     {
-      stream[:channel][:name] => {
-        viewers: stream[:viewers],
+      stream[:user_name] => {
+        viewers: stream[:viewer_count],
         updated_at: Time.now
       }
     }
@@ -28,10 +28,10 @@ class StreamFinder
   def self.parse_streams(streams, min_viewers, max_channels)
     channels = {}
 
-    if streams[:_total] > 0
-      streams[:streams].each do |stream|
+    if streams[:data].count > 0
+      streams[:data].each do |stream|
         break if channels.size >= max_channels
-        next if stream[:viewers] < min_viewers
+        next if stream[:viewer_count] < min_viewers
 
         channels.merge! parse_stream(stream)
       end
