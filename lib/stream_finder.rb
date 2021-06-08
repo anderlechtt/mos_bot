@@ -28,7 +28,7 @@ class StreamFinder
   def self.parse_streams(streams, min_viewers, max_channels)
     channels = {}
 
-    if streams[:data].count > 0
+    if Array(streams[:data]).count > 0
       streams[:data].each do |stream|
         break if channels.size >= max_channels
         next if stream[:viewer_count] < min_viewers
