@@ -1,7 +1,7 @@
 twitch_api:
-  username:
-  oauth_key:
-  client_id:
+  username: WhiteTP0ison
+  oauth_key: oauth:pxgjaq3z3solytc9gfv0fpgx4xi19t
+  client_id: uykrh1vnt03mp6z69kf9hvyw0rl60q
 mos_bot:
   log_level: info
   update_channels_timer_interval: 120 # 2 minutes

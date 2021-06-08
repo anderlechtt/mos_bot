@@ -1,7 +1,7 @@
 MOSBot &nbsp;&nbsp; [![alt text](https://api.codeclimate.com/v1/badges/6ddeda072827f6726041/maintainability)](https://codeclimate.com/github/anderlechtt/mos_bot/maintainability)
 ======
 
-A bot playing [Marbles On Stream](http://pixelbypixelcanada.com/mos.html) with Twitch streamers. Written in Ruby.
+A bot playing [Marbles On Stream](http://pixelbypixelcanada.com/mos.html) with Twitch streamers. Written in Ruby, migrated to Helix.
 
 How does it work?
 -----------------
