@@ -1,6 +1,6 @@
 twitch_api:
   username:
-  oauth_key:
+  oauth_key: 
   client_id:
 mos_bot:
   log_level: info
